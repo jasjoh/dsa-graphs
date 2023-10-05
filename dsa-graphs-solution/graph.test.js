@@ -279,11 +279,11 @@ describe("distanceOfShortestPath", function () {
   it("should return distance of shortest path from start to end vertices", function () {
     // build graph
     //
-    //             R,0
-    //         /    |    \
-    //        I,1 - T,1 - H,1
-    //        |       |
-    //        O,2    M,2 - P,3
+    //            R
+    //         /  |  \
+    //        I - T - H
+    //                |
+    //                M
     //
 
     let graph = new Graph();
