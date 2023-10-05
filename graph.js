@@ -46,11 +46,33 @@ class Graph {
    * - update any adjacency lists using that vertex
    */
   removeVertex(vertex) {
+    for (let adj of vertex.adjacent) {
+      adj.adjacent.delete(vertex);
+    }
 
+    this.nodes.delete(vertex);
   }
 
   /** traverse graph with DFS and returns array of Node values */
-  depthFirstSearch(start) { }
+  depthFirstSearch(start) {
+    let stack = [start];
+    let visited = new Set(stack);
+    let values = [];
+
+    while (stack.length) {
+      console.log("STACK BEFORE POP", stack);
+      let current = stack.pop();
+      values.push(current.value);
+
+      for (let adj of current.adjacent) {
+        if (!visited.has(adj)) {
+          stack.push(adj);
+          visited.add(adj);
+        }
+      }
+    }
+    return values;
+  }
 
   /** traverse graph with BDS and returns array of Node values */
   breadthFirstSearch(start) { }
